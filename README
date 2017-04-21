@@ -1,0 +1,4 @@
+Canvext (Canvas-based input fields)
+===
+
+This is an ongoing work that will bind a hidden input element to a position on a canvas and replicate its content on the canvas. I'm hoping to use this for another project where user input on a canvas can be dynamically changed. 

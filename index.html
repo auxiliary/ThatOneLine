@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvext</title>
+    <style>
+        .canvext canvas{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;  
+            border: 1px solid #777;
+        }
+        .canvext input{
+            position: absolute;
+            font-family: courier new;
+            font-size: 20px;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+            height: 30px;
+            border: 1px solid #777;
+            opacity: 0.1;
+            border: none;
+        }
+        .canvext input:focus{
+            outline: none;
+        }
+        .wrapper{
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/canvext.js"></script>
+    <script>
+        $(document).ready(function(){
+            var can = $(".canvext").canvext({
+                width: 600,
+                height: 400         
+            });
+            $(".canvext canvas").on("click", function(ev){
+                var rect = $(".canvext").data("canvext").canvas.get(0).getBoundingClientRect()
+                can.data("canvext").addInput(ev.pageX -
+                    rect.left, (ev.pageY - rect.top), 5, 5);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="canvext"> </div>
+    </div>
+</body>
+</html>
