@@ -9,19 +9,20 @@
 
     function Canvext(element, options){
         this.element = element;
-        this.canvas = $("<canvas/>")
+        var temp = $("<canvas/>")
             .addClass("canvext-canvas")
             .attr("width", options.width)
             .attr("height", options.height)
             .appendTo(this.element);
-        this.context = this.canvas.get(0).getContext("2d");
+        this.canvas = temp.get(0);
+        this.context = this.canvas.getContext("2d");
     };
 
     Canvext.prototype.redraw = function(context, x, y){
         var self = this;
         $(this.element).find("input").each(function(){
-            var posx = $(this).offset().left - self.canvas.offset().left;
-            var posy = $(this).offset().top - self.canvas.offset().top;
+            var posx = $(this).offset().left - self.canvas.getBoundingClientRect().left;
+            var posy = $(this).offset().top - self.canvas.getBoundingClientRect().top;
             var width = $(this).outerWidth();
             var height = $(this).outerHeight();
             context.clearRect(posx, posy, width, height);
@@ -31,12 +32,16 @@
     Canvext.prototype.addInput = function(x, y){
         var input = $("<input/>").addClass("canvext-input").appendTo(this.element);
         input.css({
-            left: x + this.canvas.offset().left,
-            top: y + this.canvas.offset().top - 20
+            left: x + this.canvas.getBoundingClientRect().left,
+            top: y + this.canvas.getBoundingClientRect().top - 20
         });
+
+        input.attr("data-canvext-x", x);
+        input.attr("data-canvext-y", y);
+
         var self = this;
         input.on("keyup", function(){
-            var canvas = self.canvas.get(0);
+            var canvas = self.canvas;
             var context = canvas.getContext("2d");
             context.font = "20px courier new";
             self.redraw(context, x, y);
@@ -52,12 +57,14 @@
 
     $(window).resize(function(){
         $(".canvext-input").each(function(){
-            console.log($(this));
+            var x = parseFloat($(this).attr("data-canvext-x")) 
+                + $(this).parent().data("canvext").canvas.getBoundingClientRect().left;
+            var y = parseFloat($(this).attr("data-canvext-y")) 
+                + $(this).parent().data("canvext").canvas.getBoundingClientRect().top - 20;
+
             $(this).css({
-                left: $(this).offset().left + $(window).width() 
-                    - $.fn.canvext.window_width,
-                top: $(this).offset().top + $(window).height() 
-                    - $.fn.canvext.window_height
+                left: x, 
+                top: y
             });
         });
         $.fn.canvext.window_width = $(window).width(); 
