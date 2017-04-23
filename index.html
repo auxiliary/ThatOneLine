@@ -38,6 +38,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="js/canvext.js"></script>
+    <script src="js/annot.js"></script>
     <script>
         $(document).ready(function(){
             var can = $(".canvext").canvext({
@@ -45,9 +46,8 @@
                 height: 400         
             });
             $(".canvext canvas").on("click", function(ev){
-                var rect = $(".canvext").data("canvext").canvas.getBoundingClientRect()
-                can.data("canvext").addInput(ev.pageX -
-                    rect.left, (ev.pageY - rect.top), 5, 5);
+                var rect = $(".canvext").data("canvext").canvas.getBoundingClientRect();
+                can.data("canvext").addInput(ev.pageX - rect.left, (ev.pageY - rect.top));
             });
         });
     </script>
