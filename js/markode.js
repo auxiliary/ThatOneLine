@@ -67,6 +67,24 @@
             self.selection_start = self.selection_end = -1;
             hideAnnotateButton(self.main_input);
         });
+
+        // Set up event listeners for the share and clear buttons
+        $("#btn-share").on("click", function(){
+            var canvas = Tools.trim(self.can.data("canvext").canvas);
+            var image = canvas.toDataURL("image/png");
+            $.ajax({
+                url: 'handler.php',
+                method: "POST",
+                data: {"img": image, "save": true},
+                success: function(results){
+                    alert(results);
+                }
+            });
+        });
+
+        $("#btn-clear").on("clear", function(){
+            location.reload();
+        });
     }
 
     function setReadonly(input)

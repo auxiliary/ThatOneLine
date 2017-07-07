@@ -1,0 +1,69 @@
+html, body
+{
+    padding: 0;
+    margin: 0;
+}
+body{
+}
+.canvext canvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;  
+    margin-top: 500px;
+}
+.canvext input{
+    caret-color: rgba(255, 0, 0, 255);
+    color: transparent;
+    background: transparent;
+    position: absolute;
+    font-family: courier new;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    width: 600px;
+    height: 20px;
+    border: 1px solid #777;
+    border: none;
+}
+.canvext input:focus{
+    outline: none;
+}
+.wrapper{
+    border-radius: 20px;
+    background-color: white;
+    width: 100vh;
+    height: 100vh;
+    margin: 0 auto;
+    text-align: center;
+}
+.tipso_style
+{
+    cursor: text;
+}
+.tipso_content
+{
+    padding: 3px; 
+}
+.title
+{
+    padding-top: 140px;
+    font-size: 10em;
+    font-weight: 700;
+    color: #333;
+    padding-bottom: 0;
+    font-family: 'Alegreya Sans', sans-serif;
+}
+.title .emph
+{
+    text-align: center;
+    background-color: #dce45c;
+    color: #333;
+}
+.footer{
+    font-size: 0.8em;
+    color: #ddd;
+    padding-top: 50vh;
+}
