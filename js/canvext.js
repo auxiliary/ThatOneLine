@@ -85,18 +85,6 @@
             self.redraw();
         });        
 
-        input.on("blur", function(){
-            $(this).css({
-                opacity: 0.0 
-            });
-        });
-
-        input.on("focus", function(){
-            $(this).css({
-                opacity: 0.1
-            });
-        });
-
         this.inputs[id] = input.get(0); // Add the new <input> to a list of them
 
         input.focus();

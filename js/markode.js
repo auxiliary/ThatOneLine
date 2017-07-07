@@ -37,10 +37,10 @@
             if ($(ev.target).hasClass("markode-annotate-btn"))
             { 
                 var markode = $(".canvext").data("markode"); 
-                console.log(markode.selection_start, markode.selection_end);
                 if (markode.selection_start != markode.selection_end)
                 {
                     markode.annotate();
+                    setReadonly(markode.main_input);
                     hideAnnotateButton(markode.main_input); // Get the button out of the way
                 }    
             }
@@ -67,6 +67,11 @@
             self.selection_start = self.selection_end = -1;
             hideAnnotateButton(self.main_input);
         });
+    }
+
+    function setReadonly(input)
+    {
+        $(input).attr("readOnly", true);
     }
 
     function showAnnotateButton(input, offset_x)
