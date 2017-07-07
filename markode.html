@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvext</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="tipso.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+    <style>
+        html, body
+        {
+            padding: 0;
+            margin: 0;
+        }
+        body{
+        }
+        .canvext canvas{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;  
+        }
+        .canvext input{
+            position: absolute;
+            font-family: courier new;
+            font-size: 20px;
+            padding: 0;
+            margin: 0;
+            width: 600px;
+            height: 20px;
+            border: 1px solid #777;
+            opacity: 0.1;
+            border: none;
+        }
+        .canvext input:focus{
+            outline: none;
+        }
+        .wrapper{
+            border-radius: 20px;
+            background-color: white;
+            width: 100vh;
+            height: 100vh;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .tipso_style
+        {
+            cursor: text;
+        }
+        .tipso_content
+        {
+            padding: 3px; 
+        }
+        .title
+        {
+            padding-top: 140px;
+            font-size: 10em;
+            font-weight: 700;
+            color: #333;
+            padding-bottom: 0;
+            font-family: 'Alegreya Sans', sans-serif;
+        }
+        .title .emph
+        {
+            text-align: center;
+            background-color: #dce45c;
+            color: #333;
+        }
+        .footer{
+            font-size: 0.8em;
+            color: #ddd;
+            padding-top: 50vh;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="js/tipso.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/canvext.js"></script>
+    <script src="js/markode.js"></script>
+    <script>
+        $(document).ready(function(){
+            var markode = $(".canvext").markode({});
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            That<span class="emph">One</span>Line
+        </div>
+        <div class="canvext"> </div>
+        <div class="footer">Copyright (C) 2017 Moh. Raji</div>
+    </div>
+</body>
+</html>

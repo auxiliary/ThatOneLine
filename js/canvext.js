@@ -7,6 +7,7 @@
         });
     };
 
+    // Canvext constructor
     function Canvext(element, options){
         this.element = element;
         this.settings = $.extend({}, $.fn.canvext.settings, options);
@@ -19,9 +20,12 @@
         this.context = this.canvas.getContext("2d");
         this.context.textBaseline = "top";
         this.draw_input_callbacks = {};
+        this.inputs = {};
+        this.current_input_id = 0;
     };
 
-    Canvext.prototype.drawInput = function(context, text, x, y, text_height)
+    // Default drawInput function. It draws the text of an input on the canvas
+    Canvext.prototype.drawInput = function(context, text, x, y, text_height, input_element)
     {
         context.fillText(text, x, y);    
     }
@@ -34,27 +38,26 @@
             var posy = $(this).offset().top - self.canvas.getBoundingClientRect().top;
             var width = $(this).outerWidth();
             var height = $(this).outerHeight();
-            context.clearRect(posx, posy, width, height);
+            context.clearRect(posx, posy, width, height + 3); // Clear an additional 3; important for underscores
 
             var callback_id = $(this).attr("data-canvext-id");
             var text_height = parseFloat($(this).attr("data-canvext-text-height"));
-            if (callback_id == -1)
-                self.drawInput(context, $(this).val(), posx, posy, text_height);
-            else
-                self.draw_input_callbacks[callback_id](context, $(this).val(), posx, posy, text_height);
+            self.draw_input_callbacks[callback_id](context, $(this).val(), posx, posy, text_height, this);
+
+            // Update the style of the <input>s as well
+
         });
     }
 
-    Canvext.prototype.addInput = function(x, y, text_height, id, fdraw){
-        if (typeof(id) == 'undefined')
+    // Adds an input (a real <input> and things needed to draw the text on the canvas)
+    Canvext.prototype.addInput = function(x, y, text_height, fdraw){
+        var id = this.current_input_id++;
+
+        if (typeof(fdraw) == 'undefined')
         {
-            id = -1;
             fdraw = this.drawInput;
         }
-        else
-        {
-            this.draw_input_callbacks[id] = fdraw;
-        }
+        this.draw_input_callbacks[id] = fdraw;
 
         if (typeof(text_height) == 'undefined')
         {
@@ -74,6 +77,7 @@
         input.attr("data-canvext-id", id);
         input.attr("data-canvext-text-height", text_height);
 
+        // Setup event-handlers for this new input
         var self = this;
         input.on("keyup", function(){
             var canvas = self.canvas;
@@ -92,6 +96,8 @@
                 opacity: 0.1
             });
         });
+
+        this.inputs[id] = input.get(0); // Add the new <input> to a list of them
 
         input.focus();
 
