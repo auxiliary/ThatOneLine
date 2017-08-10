@@ -15,7 +15,11 @@ Tools = {
         x, y;
 
       for (i = 0; i < l; i += 4) {
-        if (pixels.data[i+3] !== 0) {
+        // Trim transparent space
+        //if (pixels.data[i+3] !== 0) {
+
+        // Trim whitespace 
+        if (!(pixels.data[i] == 255 && pixels.data[i+1] == 255 && pixels.data[i+2] == 255)){
           x = (i / 4) % c.width;
           y = ~~((i / 4) / c.width);
       
@@ -45,11 +49,16 @@ Tools = {
         
       var trimHeight = bound.bottom - bound.top,
           trimWidth = bound.right - bound.left,
-          trimmed = ctx.getImageData(bound.left - 5, bound.top - 5, trimWidth + 5, trimHeight + 5);
+          trimmed = ctx.getImageData(bound.left, bound.top, trimWidth + 5, trimHeight + 5);
       
-      copy.canvas.width = trimWidth;
-      copy.canvas.height = trimHeight;
-      copy.putImageData(trimmed, 0, 0);
+      copy.canvas.width = trimWidth + 10;
+      copy.canvas.height = trimHeight + 10;
+
+      // Let's fill the extra space with white
+      copy.fillStyle = "#ffffff";
+      copy.fillRect(0, 0, trimWidth + 10, trimHeight + 10);
+
+      copy.putImageData(trimmed, 5, 5);
       
       // open new window with trimmed image:
       return copy.canvas;

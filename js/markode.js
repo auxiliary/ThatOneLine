@@ -63,9 +63,12 @@
                 showAnnotateButton(self.main_input, btn_offset);
             }
         });
-        $(this.main_input).on("click", function(){
-            self.selection_start = self.selection_end = -1;
-            hideAnnotateButton(self.main_input);
+        $(this.main_input).on("click", function(e){
+            if (e.target.selectionStart == e.target.selectionEnd)
+            {
+                self.selection_start = self.selection_end = -1;
+                hideAnnotateButton(self.main_input);
+            }
         });
 
         // Set up event listeners for the share and clear buttons
@@ -77,7 +80,9 @@
                 method: "POST",
                 data: {"img": image, "save": true},
                 success: function(results){
-                    alert(results);
+                    var url = buildSharingURL(results);
+                    $("#clipboard").val(url);
+                    document.querySelector('#clipboard').select();
                 }
             });
         });
@@ -85,6 +90,12 @@
         $("#btn-clear").on("clear", function(){
             location.reload();
         });
+    }
+
+    function buildSharingURL(id)
+    {
+        var url = "http://" + window.location.hostname + "/canvext/handler.php?id=" + id;
+        return url;
     }
 
     function setReadonly(input)
@@ -140,7 +151,7 @@
                 .addInput(x - 10, line_end_y + font_size, font_size, function(context, text, x, y, text_height, input_element){
                     var canvext = self.can.data("canvext");
                     var data_canvext_y = parseFloat($(input_element).attr("data-canvext-y"));
-                    var input_y = data_canvext_y + canvext.canvas.getBoundingClientRect().top
+                    var input_y = data_canvext_y + canvext.canvas.getBoundingClientRect().top + $(window).scrollTop()
                         - canvext.settings.text_height;
                     $(input_element).css({ "top": input_y });
 

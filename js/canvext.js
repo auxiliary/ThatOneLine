@@ -22,6 +22,10 @@
         this.draw_input_callbacks = {};
         this.inputs = {};
         this.current_input_id = 0;
+
+        this.context.fillStyle = "#ffffff";
+        this.context.fillRect(0, 0, options.width, options.height);
+        this.context.fillStyle = "#000000";
     };
 
     // Default drawInput function. It draws the text of an input on the canvas
@@ -34,11 +38,13 @@
         var context = this.context;
         var self = this;
         $(this.element).find("input").each(function(){
-            var posx = $(this).offset().left - self.canvas.getBoundingClientRect().left;
-            var posy = $(this).offset().top - self.canvas.getBoundingClientRect().top;
+            var posx = $(this).position().left - self.canvas.getBoundingClientRect().left;
+            var posy = $(this).position().top - self.canvas.getBoundingClientRect().top - $(window).scrollTop();
             var width = $(this).outerWidth();
             var height = $(this).outerHeight();
-            context.clearRect(posx, posy, width, height + 3); // Clear an additional 3; important for underscores
+            context.fillStyle = "#ffffff";
+            context.fillRect(posx, posy, width, height + 3); // Clear an additional 3; important for underscores
+            context.fillStyle = "#000000";
 
             var callback_id = $(this).attr("data-canvext-id");
             var text_height = parseFloat($(this).attr("data-canvext-text-height"));

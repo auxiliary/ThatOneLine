@@ -5,14 +5,18 @@ html, body
 }
 body{
 }
+.canvext
+{
+    margin-top: 100px;
+}
 .canvext canvas{
     position: absolute;
     left: 0;
-    top: 0;
     right: 0;
-    bottom: 0;
     margin: auto;  
-    margin-top: 500px;
+}
+input
+{
 }
 .canvext input{
     caret-color: rgba(255, 0, 0, 255);
