@@ -1,4 +1,6 @@
-Canvext (Canvas-based input fields)
+ThatOneLine
 ===
 
-This is an ongoing work that will bind a hidden input element to a position on a canvas and replicate its content on the canvas. I'm hoping to use this for another project where user input on a canvas can be dynamically changed. 
+This is the code behind ThatOneLine.com. 
+
+The goal of the project is to make it easy to annotate and share valuable single lines of code. 
