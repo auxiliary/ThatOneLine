@@ -82,7 +82,9 @@
                 success: function(results){
                     var url = buildSharingURL(results);
                     $("#clipboard").val(url);
-                    document.querySelector('#clipboard').select();
+                    setTimeout(function(){
+                        document.querySelector('#clipboard').select();
+                    }, 500);
                 }
             });
         });

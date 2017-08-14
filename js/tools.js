@@ -52,13 +52,17 @@ Tools = {
           trimmed = ctx.getImageData(bound.left, bound.top, trimWidth + 5, trimHeight + 5);
       
       copy.canvas.width = trimWidth + 10;
-      copy.canvas.height = trimHeight + 10;
+      copy.canvas.height = trimHeight + 30;
 
       // Let's fill the extra space with white
       copy.fillStyle = "#ffffff";
-      copy.fillRect(0, 0, trimWidth + 10, trimHeight + 10);
+      copy.fillRect(0, 0, trimWidth + 10, trimHeight + 30);
 
       copy.putImageData(trimmed, 5, 5);
+
+      copy.fillStyle = "#bbbbbb";
+      copy.font = "8px Calibri";
+      copy.fillText("Made using ThatOneLine.com", 5, trimHeight + 25);
       
       // open new window with trimmed image:
       return copy.canvas;
