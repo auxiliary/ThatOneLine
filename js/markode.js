@@ -94,7 +94,7 @@
 
     function buildSharingURL(id)
     {
-        var url = "http://" + window.location.hostname + "/canvext/handler.php?id=" + id;
+        var url = "http://" + window.location.hostname + "/canvext/image/" + id;
         return url;
     }
 
