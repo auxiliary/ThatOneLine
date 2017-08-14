@@ -27,11 +27,11 @@
         <div class="title">
             That<span class="emph">One</span>Line
         </div>
+        <div>Type. Select. Annotate. Share. </div>
         <button class="btn " id="btn-share" data-toggle="modal" data-target="#myModal"><i class="fa fa-share-alt" aria-hidden="true"></i> Share</button>
         <button class="btn" id="btn-clear"><i class="fa fa-trash" aria-hidden="true"></i> Clear</button>
         <div class="canvext"> </div>
 
-        <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
