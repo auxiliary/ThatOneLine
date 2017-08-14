@@ -87,7 +87,7 @@
             });
         });
 
-        $("#btn-clear").on("clear", function(){
+        $("#btn-clear").on("click", function(){
             location.reload();
         });
     }
