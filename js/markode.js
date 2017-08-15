@@ -14,8 +14,8 @@
         this.element = element;
         this.settings = $.extend({}, $.fn.markode.settings, options);
         this.can = $(this.element).canvext({
-            width: 600,
-            height: 400
+            width: 800,
+            height: 600
         });
         this.selection_start = this.selection_end = -1;
         this.styles = [];
@@ -71,6 +71,8 @@
             }
         });
 
+        $(this.main_input).attr("maxlength", 65);
+
         // Set up event listeners for the share and clear buttons
         $("#btn-share").on("click", function(){
             var canvas = Tools.trim(self.can.data("canvext").canvas);
@@ -96,7 +98,7 @@
 
     function buildSharingURL(id)
     {
-        var url = "http://" + window.location.hostname + "/canvext/image/" + id;
+        var url = "http://" + window.location.hostname + "/image/" + id;
         return url;
     }
 
