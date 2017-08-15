@@ -14,7 +14,7 @@
         this.element = element;
         this.settings = $.extend({}, $.fn.markode.settings, options);
         this.can = $(this.element).canvext({
-            width: 800,
+            width: 1000,
             height: 600
         });
         this.selection_start = this.selection_end = -1;
@@ -71,7 +71,7 @@
             }
         });
 
-        $(this.main_input).attr("maxlength", 65);
+        $(this.main_input).attr("maxlength", 58);
 
         // Set up event listeners for the share and clear buttons
         $("#btn-share").on("click", function(){
@@ -230,7 +230,7 @@
 
     $.fn.markode.settings = {
         colors: ['blue', 'red', 'green', 'orange', 'purple'],
-        input_x: 10,
+        input_x: 150,
         input_y: 20,
         line_offset_y: 10,
         annotation_y_height: 30

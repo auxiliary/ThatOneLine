@@ -7,7 +7,6 @@ body{
 }
 .canvext
 {
-    margin-top: 20px;
 }
 .canvext canvas{
     position: absolute;
@@ -24,7 +23,7 @@ body{
     font-size: 20px;
     padding: 0;
     margin: 0;
-    width: 800px;
+    width: 700px;
     height: 20px;
     border: 1px solid #777;
     border: none;
@@ -34,8 +33,7 @@ body{
 }
 .canvext-input:first-of-type
 {
-    border: 1px solid #ccc !important;
-    border-radius: 3px;
+    border: 1px solid #ccc;
 }
 .wrapper{
     border-radius: 20px;
@@ -57,9 +55,19 @@ body{
 {
     margin-top: 50px;
 }
+#btn-share
+{
+    border-radius: 10px 0 0 0;
+}
+#btn-clear
+{
+    border-radius: 0 10px 0 0;
+    border-left: 1px solid #333;
+    margin-left: -4px;
+}
 .title
 {
-    padding-top: 140px;
+    padding-top: 70px;
     font-size: 5em;
     font-weight: 700;
     color: #333;
