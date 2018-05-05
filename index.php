@@ -57,7 +57,8 @@
           </div>
         </div>
 
-        <div class="footer">Copyright (C) 2017 Moh. Raji</div>
+        <?php date_default_timezone_set('America/New_York'); ?>
+        <div class="footer">Copyright &copy; <?php echo date("Y"); ?> Moh. Raji</div>
     </div>
 </body>
 </html>
