@@ -7,29 +7,36 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/tipso.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
+
     <link href="css/style.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
     <script src="js/tipso.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="js/tools.js"></script>
     <script src="js/canvext.js"></script>
     <script src="js/markode.js"></script>
-    <script>
-        $(document).ready(function(){
-            var markode = $(".canvext").markode({});
-        });
-    </script>
+    <script src="js/main.js"></script>
 </head>
 <body>
     <div class="wrapper">
         <div class="title">
             That<span class="emph">One</span>Line
         </div>
-        <div>Type. Select. Annotate. Share. </div>
-        <button class="btn " id="btn-share" data-toggle="modal" data-target="#myModal"><i class="fa fa-share-alt" aria-hidden="true"></i> Share</button>
-        <button class="btn" id="btn-clear"><i class="fa fa-trash" aria-hidden="true"></i> Clear</button>
+        <div id="menu">
+            <div class="steps">
+                <b>Steps:</b> <span class="step">1</span>Type <span class="step">2</span>Select <span class="step">3</span>Annotate <span class="step">4</span>Share 
+            </div>
+            <div class="buttons">
+                <button class="btn " id="btn-share" data-toggle="modal" data-target="#myModal"><i class="fa fa-share-alt" aria-hidden="true"></i> Share</button>
+                <button class="btn" id="btn-clear"><i class="fa fa-trash" aria-hidden="true"></i> Clear</button>
+            </div>
+        </div>
         <div class="canvext"> </div>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

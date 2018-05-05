@@ -53,11 +53,11 @@ body{
 }
 .btn
 {
-    margin-top: 50px;
 }
 #btn-share
 {
     border-radius: 10px 0 0 0;
+    margin-left: 175px;
 }
 #btn-clear
 {
@@ -87,7 +87,44 @@ body{
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 10px;
-    height: 35px;
+    padding: 2px 10px;
+    height: 20px;
     background: #333;
+}
+
+.slider
+{
+    position: absolute;
+    width: 100%;
+    bottom: 25px;
+    left: 0;
+    box-shadow: 3px -5px 5px #eee;
+}
+.random-line
+{
+    max-height: 200px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin: 1px;
+}
+.step
+{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin: 0 5px;
+    border: 1px solid #333;
+    color: #111;
+    border-radius: 50%;
+}
+#menu
+{
+    margin: 0 auto;
+    margin-top: 45px;
+    width: 700px;
+}
+.steps
+{
+    float: left;
+    margin-left: 10px;
 }
